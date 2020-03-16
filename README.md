@@ -1,21 +1,32 @@
 ### rake-deploy-eks
 Deploy an app w/ secrets using...
 
+
+### Prerequisites 
+- AWS CLI `brew install awscli` and configure https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration
 - Terraform `brew install terraform`
 - Docker `brew install docker`
-- AWS CLI `brew install awscli`
-- Kubernetes
+
+---
+
+### Provision VPC and security groups
+
+```
+rake setup:network
+```
+
+---
 
 ### Provision multi-environment EKS cluster
 
-The `default` environment is used for production:
+The `default` workspace is used for production:
 ```
-rake provision
+rake setup:cluster
 ```
 
-Create cluster for new environment (eg. `staging`):
+Create cluster for new workspace (eg. `staging`):
 ```
-rake provision staging
+rake setup:cluster[staging]
 ```
 
 ---
@@ -38,6 +49,8 @@ roadmap:
 - rspec
 ```
 
+---
+
 ### Display info (per environment)
 
 ```
@@ -46,12 +59,16 @@ roadmap:
  * show running instances
 ```
 
+---
+
 ### Modify outbound TLS rules (per environment)
 
 ```
 roadmap:
 - rake task
 ```
+
+---
 
 ### Edit secrets/credentials (per environment)
 

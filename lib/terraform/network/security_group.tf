@@ -7,13 +7,13 @@ resource "aws_security_group" "standard_policy" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = [aws_vpc.main.cidr_block]
+    self        = true
   }
 
   egress {
     from_port   = 0
     to_port     = 65535
     protocol    = "tcp"
-    cidr_blocks = [aws_vpc.main.cidr_block]
+    self        = true
   }
 }
