@@ -1,4 +1,7 @@
 desc 'Provision the EKS cluster'
 task :provision do
-  puts 'provision'
+  prompt 'Provision EKS cluster?'
+  try 'terraform init lib/terraform'
+  try 'terraform apply lib/terraform'
+  puts 'Completed successfully!'
 end

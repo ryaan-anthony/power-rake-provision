@@ -1,4 +1,5 @@
 desc 'Display info'
 task :info do
-  puts 'info'
+  puts 'Here is some info...'
+  raise
 end
