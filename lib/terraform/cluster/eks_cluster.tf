@@ -1,5 +1,5 @@
 resource "aws_eks_cluster" "eks_cluster" {
-  name     = "eks-cluster-${terraform.workspace}"
+  name     = "eks-cluster"
   role_arn = aws_iam_role.eks_role.arn
 
   vpc_config {
@@ -16,9 +16,9 @@ resource "aws_eks_cluster" "eks_cluster" {
   }
 
   depends_on = [
-    "aws_iam_role_policy_attachment.cluster_policy",
-    "aws_iam_role_policy_attachment.service_policy",
-    "aws_security_group.standard_policy",
-    "aws_subnet.subnets"
+    aws_iam_role_policy_attachment.cluster_policy,
+    aws_iam_role_policy_attachment.service_policy,
+    aws_security_group.standard_policy,
+    aws_subnet.subnets
   ]
 }

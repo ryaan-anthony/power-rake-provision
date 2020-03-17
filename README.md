@@ -7,41 +7,23 @@ Deploy an app w/ secrets using...
 - Terraform `brew install terraform`
 - Docker `brew install docker`
 
----
-
-### Provision VPC and security groups
+### 1. Create/update VPC network and EKS cluster
 
 ```
-rake setup:network
+rake setup
 ```
 
 ---
 
-### Provision multi-environment EKS cluster
+### 2. Destroy VPC network and EKS cluster
 
-The `default` workspace is used for production:
 ```
-rake setup:cluster
-```
-
-Create cluster for new workspace (eg. `staging`):
-```
-rake setup:cluster[staging]
+rake teardown
 ```
 
 ---
 
-### Deploy app to EKS (per environment)
-
-```
-roadmap:
-- rake task
-- aws integration
-```
-
----
-
-### Run/test app in a docker container (per environment)
+### 3. Run/test app in a docker container (per workspace)
 
 ```
 roadmap:
@@ -51,7 +33,17 @@ roadmap:
 
 ---
 
-### Display info (per environment)
+### 4. Deploy app to EKS (per workspace)
+
+```
+roadmap:
+- rake task
+- aws integration
+```
+
+---
+
+### 5. Display info (per workspace)
 
 ```
 roadmap:
@@ -61,7 +53,7 @@ roadmap:
 
 ---
 
-### Modify outbound TLS rules (per environment)
+### 6. Edit secrets/credentials (per workspace)
 
 ```
 roadmap:
@@ -70,7 +62,7 @@ roadmap:
 
 ---
 
-### Edit secrets/credentials (per environment)
+### 7. Modify outbound TLS rules (per workspace)
 
 ```
 roadmap:
