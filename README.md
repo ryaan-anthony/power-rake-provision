@@ -18,7 +18,7 @@ rake setup
 ### 2. Destroy VPC network and EKS cluster
 
 ```
-rake teardown
+rake destroy
 ```
 
 ---

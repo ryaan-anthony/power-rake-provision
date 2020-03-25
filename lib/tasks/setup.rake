@@ -10,8 +10,8 @@ task :setup do
   puts 'Completed successfully!'
 end
 
-desc 'Teardown the EKS cluster and VPC network'
-task :teardown do
+desc 'Destroy the EKS cluster and VPC network'
+task :destroy do
   continue? "Teardown the EKS cluster and VPC network?"
   try "terraform destroy --lock=false --var-file=#{BACKEND_CONFIG} lib/terraform/cluster"
   puts 'Completed successfully!'
