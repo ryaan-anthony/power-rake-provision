@@ -6,4 +6,7 @@ resource "aws_subnet" "subnets" {
   count             = 4
   vpc_id            = aws_vpc.main.id
   cidr_block        = local.subnets[count.index]
+  tags = {
+    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+  }
 }
