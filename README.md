@@ -1,4 +1,4 @@
-### rake-deploy-eks
+### rake-deploy
 Deploy an app w/ secrets using...
 
 
