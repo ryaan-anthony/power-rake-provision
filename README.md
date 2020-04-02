@@ -3,7 +3,7 @@ Deploy an app w/ secrets using...
 
 
 ### Prerequisites 
-- AWS CLI `brew install awscli` and configure https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration
+- AWS credentials
 - Terraform `brew install terraform`
 - Docker `brew install docker`
 
