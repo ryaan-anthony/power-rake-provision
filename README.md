@@ -1,4 +1,4 @@
-### power-rake-provision
+# power-rake-provision
 Provision an AWS account using terraform.
 
 
