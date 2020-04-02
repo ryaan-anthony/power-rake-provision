@@ -1,70 +1,30 @@
-### rake-deploy
-Deploy an app w/ secrets using...
+### power-rake-provision
+Provision an AWS account using terraform.
 
 
 ### Prerequisites 
 - AWS credentials
 - Terraform `brew install terraform`
-- Docker `brew install docker`
 
-### 1. Create/update VPC network and EKS cluster
-
-```
-rake setup
-```
-
----
-
-### 2. Destroy VPC network and EKS cluster
+### 1. Create infrastructure
 
 ```
-rake destroy
+bundle exec rake setup
 ```
 
 ---
 
-### 3. Run/test app in a docker container (per workspace)
+### 2. Update infrastructure
 
 ```
-roadmap:
-- docker file
-- rspec
+bundle exec rake update
 ```
+
 
 ---
 
-### 4. Deploy app to EKS (per workspace)
+### 3. Destroy infrastructure
 
 ```
-roadmap:
-- rake task
-- aws integration
-```
-
----
-
-### 5. Display info (per workspace)
-
-```
-roadmap:
-- rake task
- * show running instances
-```
-
----
-
-### 6. Edit secrets/credentials (per workspace)
-
-```
-roadmap:
-- rake task
-```
-
----
-
-### 7. Modify outbound TLS rules (per workspace)
-
-```
-roadmap:
-- rake task
+bundle exec rake destroy
 ```
