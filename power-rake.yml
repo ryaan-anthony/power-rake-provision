@@ -1,3 +1,2 @@
 development:
-  api_key: <%= ENV['EXAMPLE_API_KEY'] %>
-  host: https://example.com/
+  project: <%= ENV['RAKE_PROJECT'] || :example_project %>

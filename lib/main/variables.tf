@@ -1,6 +1,4 @@
 locals {
-  cluster_name = "eks-cluster"
-  instance_types = ["t3.micro"]
   vpc_cidr = "10.0.0.0/26"
   subnets  = [
     "10.0.0.0/28",
@@ -15,5 +13,9 @@ variable "bucket" {
 }
 
 variable "dynamodb_table" {
+  type = string
+}
+
+variable "project" {
   type = string
 }
