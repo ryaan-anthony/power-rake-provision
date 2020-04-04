@@ -3,25 +3,26 @@ Provision an AWS account using terraform.
 
 
 ### Prerequisites 
-- AWS credentials
+- AWS authentication
 - Terraform
+- S3 bucket and Dynamodb table for remote state & locking
+
 
 ### Configuration
 
+> S3 bucket and dynamodb table can be the same for all projects/environments.
+> IMPORTANT: The table must have a primary key named LockID.
+
 ```
-export RAKE_PROJECT=example     # required
-export RAKE_ENV=production      # default = development
+export RAKE_ENV=production          # default = development
+export RAKE_PROJECT=example         # required - used to identify the current project
+export AWS_S3_BUCKET=example        # required - used to store the tf state
+export AWS_DYNAMODB_TABLE=example   # required - used to hold the lock ID
 ```
 
 ### Available commands
 
-> IMPORTANT: Create the `remote_state` first!
-
-Run `bundle exec rake -T` to see available commands
-
 ```
-bundle exec rake destroy:main          # Teardown main infrastructure for development
-bundle exec rake destroy:remote_state  # Teardown remote state for development
-bundle exec rake setup:main            # Create main infrastructure for development
-bundle exec rake setup:remote_state    # Create remote state for development
+bundle exec rake setup    # Run terraform apply
+bundle exec rake destroy  # Run terraform destroy
 ```

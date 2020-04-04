@@ -1,46 +1,25 @@
-$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-
 require 'power-rake'
 
 RAKE_ENV = PowerRake.current_env
 RAKE_PROJECT = PowerRake.config.project
-TERRAFORM_GROUPS = {
-  main: {
-    name: 'main infrastructure',
-    path: 'lib/main',
-    args: [
-      "--var project=#{RAKE_PROJECT}",
-      "--backend-config bucket=terraform-state-#{RAKE_PROJECT}",
-      "--backend-config dynamodb_table=terraform-locks-#{RAKE_PROJECT}"
-    ]
-  },
-  remote_state: {
-    name: 'remote state',
-    path: 'lib/remote_state',
-    args: [
-      "--var bucket=terraform-state-#{RAKE_PROJECT}",
-      "--var dynamodb_table=terraform-locks-#{RAKE_PROJECT}"
-    ]
-  }
-}
+BACKEND_CONFIG = [
+  "--backend-config bucket=#{PowerRake.config.backend['bucket']}",
+  "--backend-config dynamodb_table=#{PowerRake.config.backend['lock_table']}",
+  "--backend-config key=#{RAKE_PROJECT}/#{RAKE_ENV}.tfstate"
+].join(' ')
 
-TERRAFORM_GROUPS.each do |group, config|
-  namespace :setup do
-    desc "Create #{config[:name]} for #{RAKE_ENV}"
-    task group do
-      continue? "Create #{config[:name]} for #{RAKE_ENV}?"
-      try "terraform init #{config[:path]}"
-      try "terraform apply #{config[:args].join(' ')} #{config[:path]}"
-      puts 'Completed successfully!'
-    end
-  end
+desc 'Run terraform apply'
+task :setup do
+  continue? "Run terraform apply for #{RAKE_ENV}?"
+  try "terraform init #{BACKEND_CONFIG} terraform"
+  try "terraform apply terraform"
+  puts 'Completed successfully!'
+end
 
-  namespace :destroy do
-    desc "Teardown #{config[:name]} for #{RAKE_ENV}"
-    task group do
-      continue? "Teardown #{config[:name]} for #{RAKE_ENV}?"
-      try "terraform destroy --lock=false #{config[:args].join(' ')} #{config[:path]}"
-      puts 'Completed successfully!'
-    end
-  end
+desc 'Run terraform destroy'
+task :destroy do
+  continue? "Run terraform destroy for #{RAKE_ENV}?"
+  try "terraform init #{BACKEND_CONFIG} terraform"
+  try "terraform destroy terraform"
+  puts 'Completed successfully!'
 end

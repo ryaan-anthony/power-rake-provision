@@ -1,2 +1,14 @@
+defaults: &defaults
+  project: <%= ENV.fetch('RAKE_PROJECT') %>
+  backend:
+    bucket: <%= ENV.fetch('AWS_S3_BUCKET') %>
+    lock_table: <%= ENV.fetch('AWS_DYNAMODB_TABLE') %>
+
 development:
-  project: <%= ENV['RAKE_PROJECT'] || :example_project %>
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
