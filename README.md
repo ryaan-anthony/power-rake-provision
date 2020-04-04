@@ -11,6 +11,7 @@ Provision an AWS account using terraform.
 ### Configuration
 
 > S3 bucket and dynamodb table can be the same for all projects/environments.
+
 > IMPORTANT: The table must have a primary key named LockID.
 
 ```
