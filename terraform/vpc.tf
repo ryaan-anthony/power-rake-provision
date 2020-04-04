@@ -1,9 +1,7 @@
-resource "aws_vpc" "main" {
-  cidr_block        = local.vpc_cidr
+data "aws_vpc" "selected" {
+  id = var.vpc_id
 }
 
-resource "aws_subnet" "subnets" {
-  count             = 4
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = local.subnets[count.index]
+data "aws_subnet_ids" "selected" {
+  vpc_id = var.vpc_id
 }

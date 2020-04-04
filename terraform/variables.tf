@@ -1,13 +1,7 @@
-locals {
-  vpc_cidr = "10.0.0.0/26"
-  subnets  = [
-    "10.0.0.0/28",
-    "10.0.0.16/28",
-    "10.0.0.32/28",
-    "10.0.0.48/28"
-  ]
-}
-
-variable "project" {
-  type = string
-}
+variable "certificate_arn" {}
+variable "environment" {}
+variable "instance_ami" {}
+variable "instance_count" {}
+variable "instance_type" {}
+variable "project" {}
+variable "vpc_id" {}

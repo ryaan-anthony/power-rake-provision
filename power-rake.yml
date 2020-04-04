@@ -3,6 +3,12 @@ defaults: &defaults
   backend:
     bucket: <%= ENV.fetch('AWS_S3_BUCKET') %>
     lock_table: <%= ENV.fetch('AWS_DYNAMODB_TABLE') %>
+  certificate_arn: <%= ENV.fetch('AWS_CERT_ARN') %>
+  instance:
+    ami: <%= ENV.fetch('AWS_INSTANCE_AMI') %>
+    count: 2
+    type: t2.micro
+  vpc_id: <%= ENV.fetch('AWS_VPC_ID') %>
 
 development:
   <<: *defaults
