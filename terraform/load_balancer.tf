@@ -1,6 +1,6 @@
 resource "aws_lb" "load_balancer" {
   name               = "${var.project}-${var.environment}"
-  security_groups    = [aws_security_group.standard_policy.id]
+  security_groups    = [aws_security_group.policy.id]
   subnets            = data.aws_subnet_ids.selected.ids
 }
 

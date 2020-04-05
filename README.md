@@ -1,11 +1,11 @@
 # power-rake-provision
-Provision an AWS account using terraform.
+Provision a load balanced application server using Terraform.
 
 ### Prerequisites 
 - AWS authentication
 - Terraform
 - S3 bucket and dynamodb table (can be the same for all projects/environments)
-    > IMPORTANT: The table must have a primary key named LockID
+    > IMPORTANT: The table must have a primary key "LockID"
     
     > Read more: https://www.terraform.io/docs/backends/types/s3.html
 
@@ -20,7 +20,7 @@ export AWS_DYNAMODB_TABLE=example               # required - used to hold the lo
 
 ### Additional configuration
 
-These values are required and must exist before initial setup!
+These values must be set before running the `setup` task.
 
 ```
 export AWS_VPC_ID=vpc-123

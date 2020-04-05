@@ -1,5 +1,5 @@
-resource "aws_security_group" "standard_policy" {
-  name        = "policy for ${var.project}"
+resource "aws_security_group" "policy" {
+  name        = "${var.project} ${var.environment}"
   description = "Allow TLS through self"
   vpc_id      = data.aws_vpc.selected.id
 
