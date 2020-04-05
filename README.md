@@ -49,3 +49,11 @@ bundle exec rake plan                       # Run terraform plan
 bundle exec rake apply                      # Run terraform apply
 bundle exec rake destroy                    # Run terraform destroy
 ```
+
+### Roadmap
+
+Task | State
+-----|-----
+WAF integration | TODO
+SSH into instances | TODO
+Persist aws configs | TODO 
