@@ -5,7 +5,6 @@ Provision a load balanced application server using Terraform.
 - Remote state is persisted to an AWS S3 bucket.
 - Deploy keys are created and persisted to AWS Secrets Manager.
 - SSL certs pulled from AWS Certificate Manager.
-- Security groups 
 
 ### Prerequisites 
 - AWS authentication
