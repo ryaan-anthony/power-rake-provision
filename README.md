@@ -22,7 +22,7 @@ export RAKE_ENV=production                  # default = development
 export RAKE_PROJECT=example                 # required - used to identify the current project
 ```
 
-> Want to have separate config files for different projects?
+Want to have separate config files for different projects?
 
 ```
 export RAKE_CONFIG=other-project.yml        # optional - path to yaml file
