@@ -7,6 +7,7 @@ Provision a load balanced application server using Terraform.
 - SSL certs pulled from AWS Certificate Manager.
 
 ### Prerequisites 
+
 - AWS authentication
 - Terraform
 - S3 bucket and dynamodb table (can be the same for all projects/environments)
