@@ -12,6 +12,7 @@ TF_VARS = [
   "--var instance_ami=#{PowerRake.config.instance['ami']}",
   "--var instance_count=#{PowerRake.config.instance['count']}",
   "--var instance_type=#{PowerRake.config.instance['type']}",
+  "--var instance_user=#{PowerRake.config.instance['user']}",
   "--var project=#{PowerRake.config.project}",
   "--var vpc_id=#{PowerRake.config.vpc_id}"
 ].join(' ')

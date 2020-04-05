@@ -8,6 +8,7 @@ defaults: &defaults
     ami: <%= ENV.fetch('AWS_INSTANCE_AMI') %>
     count: 2
     type: t2.micro
+    user: <%= ENV.fetch('AWS_INSTANCE_USER') %>
   vpc_id: <%= ENV.fetch('AWS_VPC_ID') %>
 
 development:

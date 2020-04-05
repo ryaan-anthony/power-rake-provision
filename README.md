@@ -8,7 +8,7 @@ Provision a load balanced application server using Terraform.
 
 ### Prerequisites 
 
-- AWS authentication
+- AWS API credentials
 - Terraform
 - S3 bucket and dynamodb table (can be the same for all projects/environments)
 
@@ -37,6 +37,7 @@ export AWS_DYNAMODB_TABLE=example           # required - used to hold the lock I
 export AWS_VPC_ID=vpc-123                   # required
 export AWS_CERT_ARN=arn:aws:acm:etc...      # required
 export AWS_INSTANCE_AMI=ami-123             # required
+export AWS_INSTANCE_USER=root               # required
 ```
 
 > See power-rake.yml for more options
@@ -56,5 +57,6 @@ bundle exec rake destroy                    # Run terraform destroy
 Task | State
 -----|-----
 WAF integration | TODO
-SSH into instances | TODO
 Persist aws configs | TODO 
+SSH into instances | TODO
+Modify outbound TLS rules | TODO 
