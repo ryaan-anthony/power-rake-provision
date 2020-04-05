@@ -2,7 +2,7 @@
 Provision a load balanced application server using Terraform.
 
 - Multi-project/multi-environment configuration via Power Rake.
-- Remote state is persisted to an S3 bucket.
+- Remote state is persisted to an AWS S3 bucket.
 - Deploy keys are created and persisted to AWS Secrets Manager.
 - SSL certs pulled from AWS Certificate Manager.
 - Security groups 
