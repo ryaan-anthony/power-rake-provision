@@ -1,5 +1,6 @@
 defaults: &defaults
   project: <%= ENV.fetch('RAKE_PROJECT') %>
+  source_path: terraform/
   backend:
     bucket: <%= ENV.fetch('AWS_S3_BUCKET') %>
     lock_table: <%= ENV.fetch('AWS_DYNAMODB_TABLE') %>

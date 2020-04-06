@@ -6,6 +6,8 @@ INIT_BACKEND = [
   "--backend-config key=#{PowerRake.config.project}/#{PowerRake.current_env}.tfstate"
 ].join(' ')
 
+TF_SOURCE_PATH = PowerRake.config.source_path
+
 TF_VARS = [
   "--var certificate_arn=#{PowerRake.config.certificate_arn}",
   "--var environment=#{PowerRake.current_env}",
@@ -18,17 +20,17 @@ TF_VARS = [
 ].join(' ')
 
 task :init do
-  try? "terraform init #{INIT_BACKEND} terraform"
+  try? "terraform init #{INIT_BACKEND} #{TF_SOURCE_PATH}"
 end
 
 task :plan do
-  try? "terraform plan #{TF_VARS} terraform"
+  try? "terraform plan #{TF_VARS} #{TF_SOURCE_PATH}"
 end
 
 task :apply do
-  try? "terraform apply #{TF_VARS} terraform"
+  try? "terraform apply #{TF_VARS} #{TF_SOURCE_PATH}"
 end
 
 task :destroy do
-  try? "terraform destroy #{TF_VARS} terraform"
+  try? "terraform destroy #{TF_VARS} #{TF_SOURCE_PATH}"
 end
