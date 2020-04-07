@@ -1,5 +1,5 @@
-require 'power-rake'
 require 'config-reader'
+require 'interactive-rake'
 
 current_env = ENV.fetch('RAKE_ENV')
 current_config = ENV.fetch('RAKE_CONFIG')
@@ -24,18 +24,23 @@ TF_VARS = [
   "--var vpc_id=#{config.vpc_id}"
 ].join(' ')
 
+def try_command(command)
+  puts(command) && continue?
+  system(command) || abort("Aborted! `#{command}`")
+end
+
 task :init do
-  try? "terraform init #{INIT_BACKEND} #{TF_PATH}"
+  try_command "terraform init #{INIT_BACKEND} #{TF_PATH}"
 end
 
 task :plan do
-  try? "terraform plan #{TF_VARS} #{TF_PATH}"
+  try_command "terraform plan #{TF_VARS} #{TF_PATH}"
 end
 
 task :apply do
-  try? "terraform apply #{TF_VARS} #{TF_PATH}"
+  try_command "terraform apply #{TF_VARS} #{TF_PATH}"
 end
 
 task :destroy do
-  try? "terraform destroy #{TF_VARS} #{TF_PATH}"
+  try_command "terraform destroy #{TF_VARS} #{TF_PATH}"
 end

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'config-reader'
-gem 'power-rake'
+gem 'interactive-rake'
 
 group :development do
   gem 'pry'
